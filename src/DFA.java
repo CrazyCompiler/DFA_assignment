@@ -2,12 +2,12 @@
 public class DFA {
     String[] alphabets;
     State[] states;
-    private final Transition[] transitions;
+    private final Transitions transitions;
     private final State initialState;
     private final State finalState;
     private State currentState;
 
-    public DFA(State[] states, String[] alphabets, Transition[] transitions, State initialState, State finalState) {
+    public DFA(State[] states, String[] alphabets, Transitions transitions, State initialState, State finalState) {
         this.alphabets = alphabets;
         this.states = states;
         this.transitions = transitions;
@@ -15,20 +15,10 @@ public class DFA {
         this.finalState = finalState;
     }
 
-    private void updateCurrentState(char currentAlphabet){
-        for(Transition transition : transitions){
-            if(transition.hasSameFromAndAlphabet(currentState, currentAlphabet)){
-                currentState = transition.getNextState();
-            }
-        }
-    }
-
-    public boolean isLanguage(String language) {
+    public boolean isLanguage(String givenCase) {
         currentState = initialState;
-        for(int i = 0; i < language.length(); i++)
-        {
-            char givenAlphabets = language.charAt(i);
-            updateCurrentState(givenAlphabets);
+        for (String alphabet : givenCase.split("")){
+            currentState = transitions.getNextState(currentState,alphabet);
         }
         return currentState.equals(finalState);
     }
