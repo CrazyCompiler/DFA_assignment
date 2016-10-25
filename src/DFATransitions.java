@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-public class Transitions {
+public class DFATransitions {
 
     private HashMap<State,HashMap<String,State>> transitions=new HashMap<State,HashMap<String,State>>();
 

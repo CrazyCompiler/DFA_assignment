@@ -32,4 +32,4 @@ Output :
 
   - States
   - Alphabets
-  - Transitions
+  - transitions
