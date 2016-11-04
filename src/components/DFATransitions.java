@@ -1,11 +1,13 @@
+package components;
+
 import java.util.HashMap;
 
 public class DFATransitions {
 
-    private HashMap<State,HashMap<String,State>> transitions=new HashMap<State,HashMap<String,State>>();
+    private HashMap<State,HashMap<String, State>> transitions=new HashMap<State,HashMap<String, State>>();
 
     public void addTransition(State initial, String alphabet, State next) {
-        HashMap<String,State> nextStateTransition= new HashMap<String,State>();
+        HashMap<String, State> nextStateTransition= new HashMap<String, State>();
         if (transitions.containsKey(initial)){
             transitions.get(initial).put(alphabet,next);
         }else {
@@ -15,7 +17,7 @@ public class DFATransitions {
     }
 
     public State getNextState(State currentState, String currentAlphabet){
-        HashMap<String,State> nextStateTransition = transitions.get(currentState);
+        HashMap<String, State> nextStateTransition = transitions.get(currentState);
         return nextStateTransition.get(currentAlphabet);
     }
 }
