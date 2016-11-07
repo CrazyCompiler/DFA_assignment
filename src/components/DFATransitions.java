@@ -2,7 +2,7 @@ package components;
 
 import java.util.HashMap;
 
-public class DFATransitions {
+public class DFATransitions implements Transitions {
 
     private HashMap<State,HashMap<String, State>> transitions=new HashMap<State,HashMap<String, State>>();
 

@@ -1,16 +1,17 @@
 package components;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
-public class NFA {
-    String[] alphabets;
-    State[] states;
-    private final NFATransitions transitions;
+public class NFA implements LanguageVerifiers{
+    ArrayList<String> alphabets;
+    HashSet<State> states;
+    private final Transitions transitions;
     private final State initialState;
-    private final State[] finalStates;
+    private final HashSet<State> finalStates;
     private ArrayList<State> currentStates = new ArrayList<State>();
 
-    public NFA(State[] states, String[] alphabets, NFATransitions transitions, State initialState, State[] finalStates) {
+    public NFA(HashSet<State> states, ArrayList<String> alphabets, Transitions transitions, State initialState, HashSet<State> finalStates) {
         this.alphabets = alphabets;
         this.states = states;
         this.transitions = transitions;
@@ -22,7 +23,7 @@ public class NFA {
         ArrayList<State> finalStates = new ArrayList<State>();
         int count = 0;
         while (currentStates.size() > count) {
-            finalStates.addAll(transitions.getNextStates(currentStates.get(count),alphabet));
+//            finalStates.addAll(transitions.getNextStates(currentStates.get(count),alphabet));
             count++;
         }
         return finalStates;

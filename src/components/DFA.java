@@ -1,16 +1,16 @@
 package components;
-
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class DFA implements LanguageVerifiers{
     ArrayList<String> alphabets;
-    ArrayList<State> states;
-    private final DFATransitions transitions;
+    HashSet<State> states;
+    private final Transitions transitions;
     private final State initialState;
-    private final ArrayList<State> finalStates;
+    private final HashSet<State> finalStates;
     private State currentState;
 
-    public DFA(ArrayList<State> states, ArrayList<String> alphabets, DFATransitions transitions, State initialState, ArrayList<State> finalStates) {
+    public DFA(HashSet<State> states, ArrayList<String> alphabets, Transitions transitions, State initialState, HashSet<State> finalStates) {
         this.alphabets = alphabets;
         this.states = states;
         this.transitions = transitions;
