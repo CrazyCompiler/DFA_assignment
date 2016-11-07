@@ -4,7 +4,6 @@ import components.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 
 public class MachineGenerator {
 
@@ -31,7 +30,7 @@ public class MachineGenerator {
 
         ArrayList<String> givenStates = (ArrayList<String>) data.get("states");
 
-        HashSet<State> states = new HashSet<State>();
+        States states = new States();
 
         for(String state: givenStates){
             states.add(new State(state));
@@ -40,7 +39,7 @@ public class MachineGenerator {
         ArrayList<String> alphabets = (ArrayList<String>) data.get("alphabets");
         State initialState = new State((String) data.get("start-state"));
         ArrayList<String> givenFinalStates = (ArrayList<String>) data.get("final-states");
-        HashSet <State> finalStates = new HashSet<State>();
+        States finalStates = new States();
 
         for(String state:givenFinalStates){
             finalStates.add(new State(state));
@@ -48,13 +47,13 @@ public class MachineGenerator {
 
         HashMap delta = (HashMap) data.get("delta");
 
-        Transitions dfaTransitions = generateTransitions(delta);
+        Transitions transitions = generateTransitions(delta);
 
         LanguageVerifiers languageVerifiers;
         if(machineType.equals(MachineTypes.DFA))
-            languageVerifiers = new DFA(states,alphabets,dfaTransitions,initialState,finalStates);
+            languageVerifiers = new DFA(states,alphabets,transitions,initialState,finalStates);
         else
-            languageVerifiers = new NFA(states,alphabets,dfaTransitions,initialState,finalStates);
+            languageVerifiers = new NFA(states,alphabets,transitions,initialState,finalStates);
 
         return languageVerifiers;
     }

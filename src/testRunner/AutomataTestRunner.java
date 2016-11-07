@@ -26,10 +26,14 @@ public class AutomataTestRunner {
             for(String givenCase :  passCases){
                 if(languageVerifiers.isLanguage(givenCase) == true)
                     System.out.println(givenCase + "==> passed");
+                else
+                    System.out.println(givenCase + "==> failed");
             }
 
             for(String givenCase :  failCases){
                 if(languageVerifiers.isLanguage(givenCase) == false)
+                    System.out.println(givenCase + "==> passed");
+                else
                     System.out.println(givenCase + "==> failed");
             }
         }

@@ -4,13 +4,13 @@ import java.util.HashSet;
 
 public class DFA implements LanguageVerifiers{
     ArrayList<String> alphabets;
-    HashSet<State> states;
+    States states;
     private final Transitions transitions;
     private final State initialState;
-    private final HashSet<State> finalStates;
+    private final States finalStates;
     private State currentState;
 
-    public DFA(HashSet<State> states, ArrayList<String> alphabets, Transitions transitions, State initialState, HashSet<State> finalStates) {
+    public DFA(States states, ArrayList<String> alphabets, Transitions transitions, State initialState, States finalStates) {
         this.alphabets = alphabets;
         this.states = states;
         this.transitions = transitions;
