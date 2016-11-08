@@ -12,7 +12,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws Exception{
-        String filePath = "./data/examples.json";
+        String filePath = "./data/nfa.json";
         List<String> lines = Files.readAllLines(Paths.get(filePath), Charset.defaultCharset());
         String providedData = lines.get(0);
         JSONParser jsonParser = new JSONParser();

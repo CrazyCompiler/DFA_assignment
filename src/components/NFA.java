@@ -33,11 +33,7 @@ public class NFA implements LanguageVerifiers{
             currentStates = getFinalStates(currentStates,alphabet);
         }
 
-        for (State state:finalStates){
-            if (currentStates.contains(state))
-                return true;
-        }
-        return false;
+        return finalStates.intersects(currentStates);
     }
 
 }

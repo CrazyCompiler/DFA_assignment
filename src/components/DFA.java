@@ -1,6 +1,5 @@
 package components;
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class DFA implements LanguageVerifiers{
     ArrayList<String> alphabets;
@@ -23,12 +22,10 @@ public class DFA implements LanguageVerifiers{
         for (String alphabet : givenCase.split("")){
             currentState = transitions.getNextState(currentState,alphabet);
         }
-        for (State state:finalStates){
-            if (currentState.equals(state))
-                return true;
-        }
-        return false;
+        States currentStates = new States();
+        currentStates.add(currentState);
 
+        return finalStates.intersects(currentStates);
     }
 
 

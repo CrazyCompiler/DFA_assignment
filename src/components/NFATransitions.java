@@ -32,6 +32,8 @@ public class NFATransitions implements Transitions {
             if (transitions.get(currentState).containsKey(currentAlphabet)) {
                 return transitions.get(currentState).get(currentAlphabet);
             }
+            if(transitions.get(currentState).containsKey("e"))
+                return transitions.get(currentState).get("e");
         return new States();
     }
 }
